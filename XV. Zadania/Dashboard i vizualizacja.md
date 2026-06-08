@@ -1,3 +1,5 @@
+# Dashboard i Wizualizacja
+
 ## Stwórz poniższą konfigurację
 #### 1. Dashboard z wizualizacją CPU, RAM, dysku i karty sieciowej -
 
