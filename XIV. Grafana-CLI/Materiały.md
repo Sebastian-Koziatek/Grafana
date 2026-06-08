@@ -1,4 +1,4 @@
-# Grafana CLI
+![[Pasted image 20260608081708.png]]
 
 Grafana CLI (`grafana cli`) to narzędzie wiersza poleceń instalowane razem z Grafaną. Umożliwia zarządzanie pluginami, operacje administracyjne i zadania serwisowe — bez dostępu do interfejsu webowego.
 
