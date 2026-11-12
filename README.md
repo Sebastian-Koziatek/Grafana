@@ -16,6 +16,7 @@ Repozytorium zawiera pełne materiały szkoleniowe do nauki Grafany - platformy 
 - **Prometheus** - system monitoringu i alertowania
 - **Elasticsearch** - wyszukiwarka i analiza logów
 - **Zabbix** - monitoring infrastruktury IT
+- **MySQL** - relacyjna baza MySQL / MariaDB (m.in. dane do geolokalizacji)
 
 ### III. Dashboard – Zestaw Wykresów i Wskaźników
 - **Foldery** - organizacja dashboardów
@@ -42,6 +43,8 @@ Repozytorium zawiera pełne materiały szkoleniowe do nauki Grafany - platformy 
 
 ### V. Variables – Tworzenie Dynamicznych Dashboardów
 - **Konfiguracja zmiennych** - parametryzacja dashboardów
+- **Typy zmiennych** - Query, Custom, Interval, Constant, Data source, Ad hoc filters, Text box
+- **Zmienne zależne i składnia** - łańcuchy zmiennych, formaty `${var:format}`
 
 ### VI. Alerting – Obsługa Notyfikacji
 - **Alert rules** - reguły alertowania
@@ -58,14 +61,42 @@ Repozytorium zawiera pełne materiały szkoleniowe do nauki Grafany - platformy 
 - **Orgs** - organizacje w Grafanie
 
 ### VIII. Plugins – Rozszerzenie Funkcjonalności
-- Rozszerzanie możliwości Grafany poprzez pluginy
+- **Typy pluginów** - Data source, Panel, App; katalog i podpisy
+- **Instalacja i zarządzanie** - UI, `grafana cli`, aktywacja App, air-gapped
+- **Popularne pluginy** - Zabbix, Infinity, Clock; pluginy wycofane i ich zamienniki
 
 ### XIV. Grafana-CLI
-- Narzędzie linii poleceń do zarządzania Grafaną
+- Narzędzie linii poleceń `grafana cli` (dawniej `grafana-cli`) – pluginy i administracja
 
 ### XV. Zadania
 - **Dashboard i wizualizacja** - praktyczne ćwiczenia
 - **Podsumowanie** - zadania końcowe
+
+## 🧪 Środowisko laboratoryjne
+
+Materiały są dopasowane do labu z **Grafana 13.3 OSS** na Ubuntu 26.04 LTS (maszyna `vmzabbixsrv16`, adres **10.123.2.206**). Zrzuty ekranu `grafiki/lab-*.png` pochodzą z tej maszyny.
+
+| Usługa | Wersja | Adres | Dostęp (domyślny szkoleniowy) |
+|--------|--------|-------|-------------------------------|
+| Grafana OSS | 13.3.0 | http://10.123.2.206:3000 | `admin` / `admin` |
+| PostgreSQL | 18 | 10.123.2.206:5432 | baza `grafana_db` (tabele ćwiczeniowe `server_metrics`, `metrics_table`, `sales`, `locations`) |
+| MySQL / MariaDB | 11.8 | 10.123.2.206:3306 | baza `lab` (tabela `locations`) |
+| InfluxDB + Telegraf | 2.9 / 1.40 | http://10.123.2.206:8086 | org `szkolenie`, bucket `telegraf` (Flux) |
+| Prometheus + node_exporter | 3.16 / 1.12 | http://10.123.2.206:9090 | – |
+| Elasticsearch | 9.5 | http://10.123.2.206:9200 | indeksy `logstash-*` |
+| Zabbix | 7.0 LTS | http://10.123.2.206/zabbix | `Admin` / `zabbix` |
+| Mailpit (testowa skrzynka na maile z alertów) | 1.33 | http://10.123.2.206:8025 | – |
+| SSH | – | `ssh szkolenie@10.123.2.206` | `szkolenie` / `szkolenie` (sudo) |
+
+W Grafanie przygotowano:
+
+- **źródła danych:** PostgreSQL, InfluxDB (Flux), Prometheus, Elasticsearch, Zabbix (plugin `alexanderzobnin-zabbix-app`), MySQL, TestData,
+- **dashboardy:** folder **Szkolenie Grafana** (Źródła danych, Wizualizacje – wszystkie typy, Zmienne), folder **Produkcja** (Serwer Linux – przegląd), folder **Development**, playlistę **Ekran NOC**,
+- **alerting:** reguły w folderze **Szkolenie Grafana/Alerty**, contact pointy e-mail (Mailpit), polityki powiadomień i szablon wiadomości,
+- **administracja:** użytkowników `jan.kowalski`, `anna.nowak`, `piotr.zielinski`, `ewa.wisniewska` (hasło `Szkolenie123!`), zespoły **Zespół Ops** i **Zespół Dev**, organizację **Klient B**,
+- **pluginy dodatkowe:** Zabbix, Clock, Infinity oraz wycofany JSON API (do porównania).
+
+Ćwiczenia praktyczne są na końcu lekcji (sekcje **Ćwiczenie w labie**) oraz w rozdziale **XV. Zadania**.
 
 ## 📁 Dodatkowe Zasoby
 
